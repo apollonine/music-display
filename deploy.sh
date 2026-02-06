@@ -47,29 +47,26 @@ if [ -d "$REPO_DIR" ]; then
     git pull
 else
     echo "📥 Cloning repository..."
-    git clone https://github.com/YOUR_USERNAME/music-display.git "$REPO_DIR"
+    sudo -u pi git clone https://github.com/YOUR_USERNAME/music-display.git "$REPO_DIR"
     cd "$REPO_DIR"
 fi
 
 # Setup Python environment
 echo "🐍 Setting up Python environment..."
 cd "$REPO_DIR/backend"
-python3 -m venv venv
-source venv/bin/activate
-
-# Install Python packages
-echo "📦 Installing Python packages..."
-pip install --upgrade pip
-pip install -r requirements.txt
+sudo -u pi python3 -m venv venv
+sudo -u pi -H pip install --upgrade pip
+sudo -u pi -H pip install -r requirements.txt
 
 # Install hardware-specific packages
 echo "🖥️  Installing hardware packages..."
-pip install RPi.GPIO waveshare-epd luma.oled
+sudo -u pi -H pip install RPi.GPIO waveshare-epd luma.oled
 
 # Create environment file
 echo "⚙️  Setting up configuration..."
 if [ ! -f .env ]; then
-    cp .env.example .env
+    sudo -u pi cp .env.example .env
+    sudo chown pi:pi .env
     echo "✅ Created .env file - please edit with your API keys:"
     echo "   nano $REPO_DIR/backend/.env"
 fi
