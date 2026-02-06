@@ -11,7 +11,7 @@ import { ModeIndicator } from './components/ModeIndicator';
 import type { DisplayMode } from './types';
 
 function App() {
-  const { isConnected, track, mode, sendMessage } = useWebSocket();
+  const { isConnected, track, mode } = useWebSocket();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isDemoMode, setIsDemoMode] = useState(false);
   const [activeSource, setActiveSource] = useState<string>('demo');
