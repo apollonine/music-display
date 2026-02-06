@@ -1,0 +1,8 @@
+websockets
+Pillow
+httpx
+
+# Raspberry Pi specific (uncomment when deploying to Pi)
+# RPi.GPIO
+# waveshare-epd
+# luma.oled
